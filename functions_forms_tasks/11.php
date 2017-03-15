@@ -8,9 +8,13 @@ mb_internal_encoding("UTF-8");
 function mb_ucfirst($text) {
     return mb_strtoupper(mb_substr($text, 0, 1)) . mb_substr($text, 1);
 }
+
 function toUpperCase($text1){
+  $text1 = array_filter(explode('. ',$text1));
+  $result = toUpperCase($text1);
+
   foreach ($text1 as &$value)
-   $value = mb_ucfirst($value);
+   $value = mb_strtoupper(mb_substr($value, 0, 1)) . mb_substr($value, 1);
 
   $result = implode('. ',$text1);
   return $result;
